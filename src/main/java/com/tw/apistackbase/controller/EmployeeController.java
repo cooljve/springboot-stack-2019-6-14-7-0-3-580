@@ -1,7 +1,7 @@
 package com.tw.apistackbase.controller;
 
 import com.tw.apistackbase.model.Employee;
-import com.tw.apistackbase.repository.EmployeeRepository;
+import com.tw.apistackbase.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,35 +12,35 @@ import java.util.List;
 public class EmployeeController {
 
   @Autowired
-  private EmployeeRepository repository;
+  private EmployeeService employeeService;
 
   @GetMapping
   public List<Employee> findAll() {
-    return repository.findAll();
+    return employeeService.findAll();
   }
 
   @GetMapping("{employeeId}")
   public Employee findById(@PathVariable String employeeId) {
-    return repository.findById(employeeId);
+    return employeeService.findById(employeeId);
   }
 
   @GetMapping(params = "age")
   public List<Employee> findAgeAbove(@RequestParam int age) {
-    return repository.findAgeAbove(age);
+    return employeeService.findAgeAbove(age);
   }
 
   @PostMapping
   public Employee addEmployee(@RequestBody Employee employee) {
-    return repository.add(employee);
+    return employeeService.add(employee);
   }
 
   @DeleteMapping("{employeeId}")
   public Employee deleteEmployee(@PathVariable String employeeId) {
-    return repository.delete(employeeId);
+    return employeeService.delete(employeeId);
   }
 
   @PutMapping("{employeeId}")
   public Employee updateEmployee(@RequestBody Employee employee, @PathVariable String employeeId) {
-    return repository.update(employee, employeeId);
+    return employeeService.update(employee, employeeId);
   }
 }
