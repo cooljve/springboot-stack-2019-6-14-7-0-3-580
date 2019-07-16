@@ -2,6 +2,7 @@ package com.tw.apistackbase.controller;
 
 import com.tw.apistackbase.model.Employee;
 import com.tw.apistackbase.repository.EmployeeRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,7 +11,8 @@ import java.util.List;
 @RequestMapping("/employees")
 public class EmployeeController {
 
-  private EmployeeRepository repository = new EmployeeRepository();
+  @Autowired
+  private EmployeeRepository repository;
 
   @GetMapping
   public List<Employee> findAll() {
