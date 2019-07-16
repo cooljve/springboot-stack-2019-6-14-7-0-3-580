@@ -33,7 +33,7 @@ public class EmployeeRepository {
     return map.remove(employeeId);
   }
 
-  public List<Employee> findByAge(int age) {
+  public List<Employee> findAgeAbove(int age) {
     return new ArrayList<>(map.values()).stream().filter(x -> x.getAge() > age).collect(Collectors.toList());
   }
 

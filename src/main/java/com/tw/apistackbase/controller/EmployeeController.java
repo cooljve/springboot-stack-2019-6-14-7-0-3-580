@@ -22,9 +22,9 @@ public class EmployeeController {
     return repository.findById(employeeId);
   }
 
-  @GetMapping("age/{age}")
-  public List<Employee> findByAge(@PathVariable int age) {
-    return repository.findByAge(age);
+  @GetMapping(params = "age")
+  public List<Employee> findAgeAbove(@RequestParam int age) {
+    return repository.findAgeAbove(age);
   }
 
   @PostMapping
