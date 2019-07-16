@@ -7,7 +7,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Repository
-public class EmployeeRepositoryimpl implements EmployeeRepository {
+public class EmployeeRepositoryImpl implements EmployeeRepository {
   private static Map<String, Employee> map = new HashMap<>();
 
   static {
