@@ -34,12 +34,22 @@ class EmployeeControllerTest {
     Employee employee = new Employee("1", "Joi", 22, "female");
     when(service.findById(anyString())).thenReturn(employee);
 
-    ResultActions result = mvc.perform(get("/employees/{employeeId}","1"));
+    ResultActions result = mvc.perform(get("/employees/{employeeId}",employee.getId()));
 
     result.andExpect(status().isOk())
         .andExpect(jsonPath("$.name",is("Joi")))
         .andExpect(jsonPath("$.age",is(22)))
         .andExpect(jsonPath("$.gender",is("female")));
+  }
+
+  @Test
+  public void should_return_employees_find_all()throws Exception {
+    Employee employee = new Employee("1", "Joi", 22, "female");
+    when(service.findAll()).thenReturn(Arrays.asList(employee));
+
+    ResultActions result = mvc.perform(get("/employees"));
+
+    result.andExpect(status().isOk());
   }
 
 }
