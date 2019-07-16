@@ -27,7 +27,7 @@ public class EmployeeController {
     return repository.findByAge(age);
   }
 
-  @PostMapping("new")
+  @PostMapping
   public Employee addEmployee(@RequestBody Employee employee) {
     return repository.add(employee);
   }
@@ -35,5 +35,10 @@ public class EmployeeController {
   @DeleteMapping("{employeeId}")
   public Employee deleteEmployee(@PathVariable String employeeId) {
     return repository.delete(employeeId);
+  }
+
+  @PutMapping("{employeeId}")
+  public Employee updateEmployee(@RequestBody Employee employee, @PathVariable String employeeId) {
+    return repository.update(employee, employeeId);
   }
 }

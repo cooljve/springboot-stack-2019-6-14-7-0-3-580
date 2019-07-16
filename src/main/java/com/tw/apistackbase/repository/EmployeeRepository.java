@@ -36,4 +36,14 @@ public class EmployeeRepository {
   public List<Employee> findByAge(int age) {
     return new ArrayList<>(map.values()).stream().filter(x -> x.getAge() > age).collect(Collectors.toList());
   }
+
+  public Employee update(Employee employee,String employeeId) {
+    if (map.containsValue(employeeId)) {
+      map.replace(employeeId, employee);
+    } else {
+      employee.setId(employeeId);
+      map.put(employeeId, employee);
+    }
+    return employee;
+  }
 }
